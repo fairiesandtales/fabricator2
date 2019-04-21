@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    environment:
+      DATABASE_URL:  postgres://fabricator:fabricator@database/fabricator
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    depends_on:
+      - database
+  database:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER:     fabricator
+      POSTGRES_PASSWORD: fabricator
+      POSTGRES_DB:       fabricator
+    volumes:
+      - .db:/var/lib/postgres
