@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     resources :maps
     resources :map_types
 
-    root to: "maps#index"
+    get 'map_visual', to: 'static#visual_map'
+    get 'welcome', to: 'static#welcome'
+
+    root to: "static#welcome"
   end
 end
