@@ -1,1 +1,33 @@
-hey
+<% size = 100.0/@boundary[:x].size %>
+
+<style>
+  #map {
+    width: 90%;
+    margin: auto;
+    border: 1px dotted black;
+    background-color: antiquewhite;
+  }
+
+  .box {
+    float: left;
+    width: <%= size %>%;
+    height: <%= size %>%;
+    padding-bottom: <%= size %>%;
+  }
+
+  .clearfix {
+    clear: both;
+  }
+</style>
+
+
+<div id="map">
+  <% @boundary[:y].each do |y| %>
+      <% @boundary[:x].each do |x| %>
+      <% color = @map.select { |ax, ay| ax == x && ay == y}.flatten.last %>
+
+        <div class="box" style="background-color: <%= "##{color}" || 'white' %>;"></div>
+      <% end %>
+  <% end %>
+  <div class="clearfix"></div>
+</div>
