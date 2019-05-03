@@ -1,12 +1,12 @@
 FROM ruby:alpine
 
-RUN apk add --no-cache --update build-base postgresql-dev tzdata strace
+RUN apk add --no-cache --update build-base postgresql-dev tzdata
 
 ENV APP_PATH /app
 WORKDIR $APP_PATH
 
-#RUN adduser -S -D fabricator
-#USER fabricator
+RUN adduser -D fabricator
+USER fabricator
 
 COPY Gemfile* $APP_PATH/
 
